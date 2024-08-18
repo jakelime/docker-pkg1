@@ -9,3 +9,12 @@ python.exe -m pip install --upgrade pip -i https://artifactreg.stengglink.com/re
 pip install -r requirements.txt -i https://artifactreg.stengglink.com/repository/pypi-proxy/simple/
 
 ```
+
+
+
+```shell
+# Docker commands
+docker build -t simple-flask-app
+docker run  --name "backend-flask" -p 8000:8000 -d c92f7c96a039
+
+```
