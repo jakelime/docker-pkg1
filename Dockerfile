@@ -1,4 +1,4 @@
-FROM python3.12-bookworm
+FROM python:3.12.5-slim-bookworm
 WORKDIR /usr/src/app
 COPY . .
 RUN bash install.sh
