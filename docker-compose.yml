@@ -1,0 +1,19 @@
+services:
+  app:
+    container_name: app
+    restart: always
+    build: ./dockersrc-app
+    ports:
+      - "8000:8000"
+    # links:
+    #   - flaskapp
+
+  # db:
+  #   image: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_PASSWORD: "mysecretpassword"
+  #     POSTGRES_USER: "pgadmin"
+  #     POSTGRES_DB: "jetforgedata"
+  #     PGDATA: "/var/lib/postgresql/data"
