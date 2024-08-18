@@ -1,1 +1,1 @@
-Flask
+django>=5.1
