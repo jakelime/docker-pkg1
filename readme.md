@@ -18,3 +18,15 @@ docker build -t simple-flask-app
 docker run  --name "backend-flask" -p 8000:8000 -d c92f7c96a039
 
 ```
+
+
+## Setup environment
+
+`touch .env`
+
+```shell
+# create .env file in root directory
+POSTGRES_USER="jetforgeapp"
+POSTGRES_PASSWORD="myverysecretunlockkey"
+POSTGRES_DB="jetforgedb"
+```

@@ -6,23 +6,34 @@ services:
     ports:
       - "5000:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: "postgres:16.4-alpine"
     restart: always
+    env_file:
+      - ".env"
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: "jetforgeapp"
-      POSTGRES_PASSWORD: "43STdyJaf41sAsbKd"
-      POSTGRES_DB: "jetforgedb"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "jetforgedb" ]
+      interval: 5s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+    # this environment is required!! 
+    ## need to find a way 
+    # environment:
+    #   POSTGRES_USER: "jetforgeapp"
+    #   POSTGRES_PASSWORD: "43STdyJaf41sAsbKd"
+    #   POSTGRES_DB: "jetforgedb"
 
-  # db_mssql:
-  #   image: "mcr.microsoft.com/mssql/server:2022-latest" # options are [2017, 2019, 2022]
-  #   restart: always
-  #   ports:
-  #     - "1433:1433"
-  #   environment:
-  #     ACCEPT_EULA: "Y"
-  #     MSSQL_SA_PASSWORD: "43STdyJaf41sAsbKd"
+    # db_mssql:
+    #   image: "mcr.microsoft.com/mssql/server:2022-latest" # options are [2017, 2019, 2022]
+    #   restart: always
+    #   ports:
+    #     - "1433:1433"
+    #   environment:
+    #     ACCEPT_EULA: "Y"
+    #     MSSQL_SA_PASSWORD: "43STdyJaf41sAsbKd"
