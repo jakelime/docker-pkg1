@@ -17,3 +17,12 @@ services:
       POSTGRES_USER: "jetforgeapp"
       POSTGRES_PASSWORD: "43STdyJaf41sAsbKd"
       POSTGRES_DB: "jetforgedb"
+
+  # db_mssql:
+  #   image: "mcr.microsoft.com/mssql/server:2022-latest" # options are [2017, 2019, 2022]
+  #   restart: always
+  #   ports:
+  #     - "1433:1433"
+  #   environment:
+  #     ACCEPT_EULA: "Y"
+  #     MSSQL_SA_PASSWORD: "43STdyJaf41sAsbKd"
